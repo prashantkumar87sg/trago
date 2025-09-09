@@ -3,14 +3,3 @@ compatibility_date = "2025-01-09"
 
 [assets]
 directory = "."
-binding = "ASSETS"
-
-[[assets.rules]]
-type = "Data"
-globs = ["**/*.html"]
-fallthrough = true
-
-[[assets.rules]]
-type = "Data"
-globs = ["**/*.css", "**/*.js", "**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.gif", "**/*.svg", "**/*.ico", "**/*.woff", "**/*.woff2", "**/*.ttf"]
-fallthrough = true
