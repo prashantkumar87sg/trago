@@ -144,16 +144,9 @@
         background-size: 32px 32px;
       }
 
-      /* Noise overlay using SVG turbulence (very lightweight) */
+      /* Noise overlay using single-line SVG data URI to avoid CSS parse issues */
       .bg-noise {
-        background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
-          <svg xmlns='http://www.w3.org/2000/svg' width='128' height='128'>
-            <filter id='n'>
-              <feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/>
-              <feColorMatrix type='saturate' values='0'/>
-            </filter>
-            <rect width='100%' height='100%' filter='url(%23n)' opacity='0.05'/>
-          </svg>");
+        background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='128' height='128'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.05'/></svg>");
       }
 
       /* Radial glow */
@@ -195,174 +188,14 @@
             <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Enterprise-grade. Fast. Secure.</p>
           </div>
 
-          <!-- Glassy form card -->
-          <div class="mt-8 w-full max-w-2xl rounded-2xl border border-slate-200 bg-white/70 p-4 backdrop-blur-md shadow-glow dark:border-white/10 dark:bg-white/5">
-            <form id="notify-form" class="grid grid-cols-1 gap-3 md:grid-cols-[1fr_1fr_auto] md:items-start" novalidate>
-              <!-- Honeypot -->
-              <label class="sr-only" for="company_website">Company website</label>
-              <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" style="position:absolute;left:-10000px;top:-10000px;opacity:0" />
 
-              <div class="md:col-span-1">
-                <label for="name" class="mb-1 block text-sm text-slate-700 dark:text-slate-300">Name</label>
-                <input id="name" name="name" type="text" inputmode="text" autocomplete="name" placeholder="Your name" class="w-full rounded-lg border border-slate-200 bg-white/70 px-3 py-2 text-slate-900 placeholder-slate-500 outline-none transition focus:border-primary/50 focus:ring-2 focus:ring-primary/40 dark:border-white/10 dark:bg-white/10 dark:text-slate-100 dark:placeholder-slate-400" />
-              </div>
-
-              <div class="md:col-span-1">
-                <label for="email" class="mb-1 block text-sm text-slate-700 dark:text-slate-300">Work email</label>
-                <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Work email" class="peer w-full rounded-lg border border-slate-200 bg-white/70 px-3 py-2 text-slate-900 placeholder-slate-500 outline-none transition focus:border-primary/50 focus:ring-2 focus:ring-primary/40 invalid:[&:not(:placeholder-shown)]:border-red-500 dark:border-white/10 dark:bg-white/10 dark:text-slate-100 dark:placeholder-slate-400" aria-describedby="email-help email-error" aria-invalid="false" />
-                <p id="email-help" class="mt-1 text-xs text-slate-500 dark:text-slate-400">We’ll only email once we launch.</p>
-                <p id="email-error" class="mt-1 hidden text-xs text-red-400">Please enter a valid work email.</p>
-              </div>
-
-              <div class="md:col-span-1 md:mt-6">
-                <button id="submit-btn" type="submit" disabled class="inline-flex h-[42px] items-center justify-center rounded-lg bg-primary px-5 font-medium text-white shadow transition will-change-transform focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 hover:scale-[1.01] hover:shadow-lg">
-                  Notify me
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <!-- Footnotes row -->
-          <div class="mx-auto mt-6 flex w-full max-w-2xl flex-col items-center justify-between gap-4 text-sm text-slate-600 dark:text-slate-400 sm:flex-row">
-            <nav class="flex items-center gap-4">
-              <a class="underline-offset-2 hover:text-slate-800 dark:hover:text-slate-300 hover:underline" href="/privacy">Privacy</a>
-              <span class="opacity-40">·</span>
-              <a class="underline-offset-2 hover:text-slate-800 dark:hover:text-slate-300 hover:underline" href="/terms">Terms</a>
-              <span class="opacity-40">·</span>
-              <a class="underline-offset-2 hover:text-slate-800 dark:hover:text-slate-300 hover:underline" href="mailto:hello@trago.ai">Contact</a>
-            </nav>
-            <div class="flex items-center gap-2">
-              <span class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white/80 px-2 py-0.5 text-xs text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
-                <span class="h-1.5 w-1.5 rounded-full bg-green-400"></span> Built on Cloudflare
-              </span>
-              <span class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white/80 px-2 py-0.5 text-xs text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
-                <span class="h-1.5 w-1.5 rounded-full bg-amber-300"></span> SOC 2 in progress
-              </span>
-            </div>
-          </div>
+          
         </section>
       </main>
 
-      <!-- Inline toast (aria-live) -->
-      <div id="toast" role="status" aria-live="polite" class="pointer-events-auto fixed inset-x-0 bottom-6 z-20 mx-auto hidden w-[92%] max-w-md rounded-xl border border-slate-200 bg-slate-900 p-3 text-sm text-white backdrop-blur-md shadow-lg transition-opacity duration-200 opacity-0 dark:border-white/10 dark:bg-white/10 dark:text-slate-100">
-        <div class="flex items-start gap-3">
-          <div class="mt-0.5 h-2.5 w-2.5 flex-none rounded-full bg-accent"></div>
-          <p id="toast-message" class="flex-1">Thanks! You’re on the list.</p>
-          <button id="toast-close" class="rounded-md p-1 text-slate-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/50" aria-label="Close notification">✕</button>
-        </div>
-      </div>
-
-      <noscript>
-        <div class="fixed bottom-0 left-0 right-0 mx-auto mb-4 w-[92%] max-w-xl rounded-md bg-amber-100 px-3 py-2 text-center text-amber-900">
-          JavaScript is disabled. Email form validation won’t run.
-        </div>
-      </noscript>
     </div>
 
-    <!-- Interactions & form handling -->
-    <script>
-      (function () {
-        var form = document.getElementById('notify-form');
-        var nameInput = document.getElementById('name');
-        var emailInput = document.getElementById('email');
-        var honeypot = document.getElementById('company_website');
-        var submitBtn = document.getElementById('submit-btn');
-        var emailError = document.getElementById('email-error');
-        var toast = document.getElementById('toast');
-        var toastMessage = document.getElementById('toast-message');
-        var toastClose = document.getElementById('toast-close');
-
-        // Basic email validation regex (kept intentionally simple)
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-        // Optional: block free email providers (uncomment to enforce "work emails")
-        // var freeDomains = ['gmail.com','yahoo.com','outlook.com','hotmail.com','icloud.com','aol.com'];
-
-        function validateEmail(value) {
-          var ok = emailRegex.test(value);
-          // Optional stricter work-email check (disabled by default):
-          // var domain = (value.split('@')[1] || '').toLowerCase();
-          // if (ok && freeDomains.includes(domain)) ok = false;
-          return ok;
-        }
-
-        function updateButtonState() {
-          var valid = validateEmail(emailInput.value.trim());
-          submitBtn.disabled = !valid;
-        }
-
-        emailInput.addEventListener('input', function () {
-          emailError.classList.add('hidden');
-          emailInput.setAttribute('aria-invalid', 'false');
-          updateButtonState();
-        });
-
-        emailInput.addEventListener('blur', function () {
-          var value = emailInput.value.trim();
-          if (!value) return; // ignore empty blur
-          var valid = validateEmail(value);
-          if (!valid) {
-            emailError.classList.remove('hidden');
-            emailInput.setAttribute('aria-invalid', 'true');
-          } else {
-            emailError.classList.add('hidden');
-            emailInput.setAttribute('aria-invalid', 'false');
-          }
-          updateButtonState();
-        });
-
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          // Honeypot check
-          if (honeypot && honeypot.value) {
-            return; // silently drop
-          }
-
-          var payload = {
-            name: (nameInput.value || '').trim(),
-            email: (emailInput.value || '').trim(),
-            ts: new Date().toISOString(),
-            userAgent: navigator.userAgent || ''
-          };
-
-          // Placeholder for backend endpoint
-          // Example: Cloudflare Worker endpoint or Formspree
-          // fetch('https://your-endpoint.example/subscribe', {
-          //   method: 'POST',
-          //   headers: { 'Content-Type': 'application/json' },
-          //   body: JSON.stringify(payload)
-          // }).then(() => { /* handle ok */ }).catch(() => { /* handle error */ });
-
-          console.log('Notify payload:', payload);
-          emailInput.value = '';
-          updateButtonState();
-          showToast('Thanks! You\'re on the list.');
-        });
-
-        function showToast(message) {
-          toastMessage.textContent = message;
-          toast.classList.remove('hidden');
-          requestAnimationFrame(function(){
-            toast.classList.add('opacity-100');
-          });
-          // Auto-hide after a few seconds
-          clearTimeout(showToast._t);
-          showToast._t = setTimeout(hideToast, 4200);
-        }
-
-        function hideToast() {
-          toast.classList.remove('opacity-100');
-          setTimeout(function(){ toast.classList.add('hidden'); }, 200);
-        }
-
-        toastClose.addEventListener('click', hideToast);
-        document.addEventListener('keydown', function (ev) {
-          if (ev.key === 'Escape') hideToast();
-        });
-
-        // Prefill button state
-        updateButtonState();
-      })();
-    </script>
+    
   </body>
 </html>
 
