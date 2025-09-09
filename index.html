@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trago — AI-native sourcing & procurement automation—coming soon.</title>
+    <meta name="description" content="Trago.ai — AI-native sourcing & procurement automation for modern enterprises. Coming soon. Enterprise-grade. Fast. Secure." />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0F19" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://trago.ai" />
+    <meta property="og:title" content="Trago — AI-native sourcing & procurement automation—coming soon." />
+    <meta property="og:description" content="Enterprise-grade. Fast. Secure." />
+    <meta property="og:image" content="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+      <svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'>
+        <defs>
+          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+            <stop offset='0%' stop-color='%230B0F19' />
+            <stop offset='100%' stop-color='%23242B3A' />
+          </linearGradient>
+          <radialGradient id='rg' cx='60%' cy='30%' r='70%'>
+            <stop offset='0%' stop-color='%236E7BFF' stop-opacity='0.6' />
+            <stop offset='100%' stop-color='transparent' />
+          </radialGradient>
+        </defs>
+        <rect width='1200' height='630' fill='url(%23g)'/>
+        <rect width='1200' height='630' fill='url(%23rg)'/>
+        <text x='50%' y='52%' text-anchor='middle' font-family='Inter, ui-sans-serif, system-ui' font-size='72' fill='white' opacity='0.95'>Trago.ai</text>
+        <text x='50%' y='62%' text-anchor='middle' font-family='Inter, ui-sans-serif, system-ui' font-size='28' fill='%2394A3B8'>AI-native sourcing & procurement automation—coming soon.</text>
+      </svg>" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Trago — AI-native sourcing & procurement automation—coming soon." />
+    <meta name="twitter:description" content="Enterprise-grade. Fast. Secure." />
+    <meta name="twitter:image" content="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+      <svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'>
+        <defs>
+          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+            <stop offset='0%' stop-color='%230B0F19' />
+            <stop offset='100%' stop-color='%23242B3A' />
+          </linearGradient>
+          <radialGradient id='rg' cx='60%' cy='30%' r='70%'>
+            <stop offset='0%' stop-color='%236E7BFF' stop-opacity='0.6' />
+            <stop offset='100%' stop-color='transparent' />
+          </radialGradient>
+        </defs>
+        <rect width='1200' height='630' fill='url(%23g)'/>
+        <rect width='1200' height='630' fill='url(%23rg)'/>
+        <text x='50%' y='52%' text-anchor='middle' font-family='Inter, ui-sans-serif, system-ui' font-size='72' fill='white' opacity='0.95'>Trago.ai</text>
+      </svg>" />
+
+    <!-- Favicon (inline SVG) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+        <defs>
+          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+            <stop offset='0%' stop-color='%236E7BFF'/>
+            <stop offset='100%' stop-color='%2310B981'/>
+          </linearGradient>
+        </defs>
+        <rect width='64' height='64' rx='14' fill='%230B0F19'/>
+        <circle cx='32' cy='32' r='26' fill='url(%23g)' opacity='0.2'/>
+        <text x='50%' y='58%' text-anchor='middle' font-family='Inter, ui-sans-serif, system-ui' font-size='34' fill='white'>T</text>
+      </svg>" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Set dark mode class early to avoid FOUC, respecting system preference -->
+    <script>
+      (function () {
+        try {
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          if (prefersDark) root.classList.add('dark');
+          else root.classList.remove('dark');
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Tailwind CDN config and script -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#6E7BFF',
+              accent: '#10B981',
+              surface: { dark: '#0B0F19', light: '#FFFFFF' },
+              muted: '#94A3B8',
+            },
+            fontFamily: {
+              sans: [
+                'Inter',
+                'IBM Plex Sans',
+                'ui-sans-serif',
+                'system-ui',
+                '-apple-system',
+                'Segoe UI',
+                'Roboto',
+                'Helvetica Neue',
+                'Arial',
+                'Noto Sans',
+                'Apple Color Emoji',
+                'Segoe UI Emoji'
+              ],
+            },
+            boxShadow: {
+              'glow': '0 0 40px 10px rgba(110, 123, 255, 0.15)',
+            },
+            keyframes: {
+              floaty: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-4px)' } },
+              orbit: {
+                '0%': { transform: 'rotate(0deg) translateX(0)' },
+                '100%': { transform: 'rotate(360deg) translateX(0)' }
+              },
+            },
+            animation: {
+              floaty: 'floaty 6s ease-in-out infinite',
+              orbit: 'orbit 22s linear infinite',
+            },
+          },
+        },
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      /* Utility palette aliases for quick tweaks:
+         Primary: #6E7BFF; Accent: #10B981; Surface Dark: #0B0F19; Surface Light: #FFFFFF; Muted: #94A3B8 */
+
+      /* Subtle mesh grid background */
+      .bg-grid {
+        background-image:
+          linear-gradient(to right, rgba(148,163,184,0.08) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(148,163,184,0.08) 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+
+      /* Noise overlay using SVG turbulence (very lightweight) */
+      .bg-noise {
+        background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+          <svg xmlns='http://www.w3.org/2000/svg' width='128' height='128'>
+            <filter id='n'>
+              <feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/>
+              <feColorMatrix type='saturate' values='0'/>
+            </filter>
+            <rect width='100%' height='100%' filter='url(%23n)' opacity='0.05'/>
+          </svg>");
+      }
+
+      /* Radial glow */
+      .radial-glow {
+        background: radial-gradient(600px 400px at 60% 20%, rgba(110,123,255,0.25), rgba(16,185,129,0.12), transparent 70%);
+      }
+    </style>
+  </head>
+  <body class="h-full antialiased bg-surface-light text-slate-800 dark:bg-surface-dark dark:text-slate-100">
+    <div class="relative min-h-screen overflow-hidden">
+      <!-- Background layers -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-grid opacity-[0.22] dark:opacity-[0.14]"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 radial-glow blur-3xl opacity-60"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-noise mix-blend-soft-light opacity-60"></div>
+
+      <!-- Optional subtle orbits -->
+      <div aria-hidden="true" class="pointer-events-none absolute -top-40 -right-28 h-[540px] w-[540px] rounded-full bg-primary/10 blur-3xl animate-floaty"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute -bottom-40 -left-28 h-[520px] w-[520px] rounded-full bg-accent/10 blur-3xl animate-floaty" style="animation-delay:1.2s"></div>
+
+      <!-- Page content -->
+      <header class="relative z-10">
+        <div class="mx-auto w-full max-w-7xl px-6 pt-8 sm:pt-10">
+          <div class="flex items-center gap-3">
+            <div class="text-2xl font-semibold tracking-tight text-slate-900 drop-shadow-sm dark:text-white">
+              Trago
+            </div>
+            <span class="inline-flex items-center rounded-full border border-slate-200 bg-white/80 px-2 py-0.5 text-xs font-medium text-slate-700 backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
+              .ai
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <main class="relative z-10">
+        <section class="mx-auto flex min-h-[78vh] w-full max-w-7xl flex-col items-center justify-center px-6 py-12">
+          <div class="mx-auto max-w-3xl text-center">
+            <h1 class="mb-3 text-6xl font-semibold tracking-tight text-slate-900 sm:text-7xl md:text-7xl dark:text-white">Trago</h1>
+            <p class="mx-auto max-w-2xl text-lg text-slate-600 sm:text-xl dark:text-slate-400">AI-native sourcing & procurement automation—coming soon.</p>
+            <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Enterprise-grade. Fast. Secure.</p>
+          </div>
+
+          <!-- Glassy form card -->
+          <div class="mt-8 w-full max-w-2xl rounded-2xl border border-slate-200 bg-white/70 p-4 backdrop-blur-md shadow-glow dark:border-white/10 dark:bg-white/5">
+            <form id="notify-form" class="grid grid-cols-1 gap-3 md:grid-cols-[1fr_1fr_auto] md:items-start" novalidate>
+              <!-- Honeypot -->
+              <label class="sr-only" for="company_website">Company website</label>
+              <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" style="position:absolute;left:-10000px;top:-10000px;opacity:0" />
+
+              <div class="md:col-span-1">
+                <label for="name" class="mb-1 block text-sm text-slate-700 dark:text-slate-300">Name</label>
+                <input id="name" name="name" type="text" inputmode="text" autocomplete="name" placeholder="Your name" class="w-full rounded-lg border border-slate-200 bg-white/70 px-3 py-2 text-slate-900 placeholder-slate-500 outline-none transition focus:border-primary/50 focus:ring-2 focus:ring-primary/40 dark:border-white/10 dark:bg-white/10 dark:text-slate-100 dark:placeholder-slate-400" />
+              </div>
+
+              <div class="md:col-span-1">
+                <label for="email" class="mb-1 block text-sm text-slate-700 dark:text-slate-300">Work email</label>
+                <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Work email" class="peer w-full rounded-lg border border-slate-200 bg-white/70 px-3 py-2 text-slate-900 placeholder-slate-500 outline-none transition focus:border-primary/50 focus:ring-2 focus:ring-primary/40 invalid:[&:not(:placeholder-shown)]:border-red-500 dark:border-white/10 dark:bg-white/10 dark:text-slate-100 dark:placeholder-slate-400" aria-describedby="email-help email-error" aria-invalid="false" />
+                <p id="email-help" class="mt-1 text-xs text-slate-500 dark:text-slate-400">We’ll only email once we launch.</p>
+                <p id="email-error" class="mt-1 hidden text-xs text-red-400">Please enter a valid work email.</p>
+              </div>
+
+              <div class="md:col-span-1 md:mt-6">
+                <button id="submit-btn" type="submit" disabled class="inline-flex h-[42px] items-center justify-center rounded-lg bg-primary px-5 font-medium text-white shadow transition will-change-transform focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 hover:scale-[1.01] hover:shadow-lg">
+                  Notify me
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Footnotes row -->
+          <div class="mx-auto mt-6 flex w-full max-w-2xl flex-col items-center justify-between gap-4 text-sm text-slate-600 dark:text-slate-400 sm:flex-row">
+            <nav class="flex items-center gap-4">
+              <a class="underline-offset-2 hover:text-slate-800 dark:hover:text-slate-300 hover:underline" href="/privacy">Privacy</a>
+              <span class="opacity-40">·</span>
+              <a class="underline-offset-2 hover:text-slate-800 dark:hover:text-slate-300 hover:underline" href="/terms">Terms</a>
+              <span class="opacity-40">·</span>
+              <a class="underline-offset-2 hover:text-slate-800 dark:hover:text-slate-300 hover:underline" href="mailto:hello@trago.ai">Contact</a>
+            </nav>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white/80 px-2 py-0.5 text-xs text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
+                <span class="h-1.5 w-1.5 rounded-full bg-green-400"></span> Built on Cloudflare
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white/80 px-2 py-0.5 text-xs text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
+                <span class="h-1.5 w-1.5 rounded-full bg-amber-300"></span> SOC 2 in progress
+              </span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Inline toast (aria-live) -->
+      <div id="toast" role="status" aria-live="polite" class="pointer-events-auto fixed inset-x-0 bottom-6 z-20 mx-auto hidden w-[92%] max-w-md rounded-xl border border-slate-200 bg-slate-900 p-3 text-sm text-white backdrop-blur-md shadow-lg transition-opacity duration-200 opacity-0 dark:border-white/10 dark:bg-white/10 dark:text-slate-100">
+        <div class="flex items-start gap-3">
+          <div class="mt-0.5 h-2.5 w-2.5 flex-none rounded-full bg-accent"></div>
+          <p id="toast-message" class="flex-1">Thanks! You’re on the list.</p>
+          <button id="toast-close" class="rounded-md p-1 text-slate-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/50" aria-label="Close notification">✕</button>
+        </div>
+      </div>
+
+      <noscript>
+        <div class="fixed bottom-0 left-0 right-0 mx-auto mb-4 w-[92%] max-w-xl rounded-md bg-amber-100 px-3 py-2 text-center text-amber-900">
+          JavaScript is disabled. Email form validation won’t run.
+        </div>
+      </noscript>
+    </div>
+
+    <!-- Interactions & form handling -->
+    <script>
+      (function () {
+        var form = document.getElementById('notify-form');
+        var nameInput = document.getElementById('name');
+        var emailInput = document.getElementById('email');
+        var honeypot = document.getElementById('company_website');
+        var submitBtn = document.getElementById('submit-btn');
+        var emailError = document.getElementById('email-error');
+        var toast = document.getElementById('toast');
+        var toastMessage = document.getElementById('toast-message');
+        var toastClose = document.getElementById('toast-close');
+
+        // Basic email validation regex (kept intentionally simple)
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        // Optional: block free email providers (uncomment to enforce "work emails")
+        // var freeDomains = ['gmail.com','yahoo.com','outlook.com','hotmail.com','icloud.com','aol.com'];
+
+        function validateEmail(value) {
+          var ok = emailRegex.test(value);
+          // Optional stricter work-email check (disabled by default):
+          // var domain = (value.split('@')[1] || '').toLowerCase();
+          // if (ok && freeDomains.includes(domain)) ok = false;
+          return ok;
+        }
+
+        function updateButtonState() {
+          var valid = validateEmail(emailInput.value.trim());
+          submitBtn.disabled = !valid;
+        }
+
+        emailInput.addEventListener('input', function () {
+          emailError.classList.add('hidden');
+          emailInput.setAttribute('aria-invalid', 'false');
+          updateButtonState();
+        });
+
+        emailInput.addEventListener('blur', function () {
+          var value = emailInput.value.trim();
+          if (!value) return; // ignore empty blur
+          var valid = validateEmail(value);
+          if (!valid) {
+            emailError.classList.remove('hidden');
+            emailInput.setAttribute('aria-invalid', 'true');
+          } else {
+            emailError.classList.add('hidden');
+            emailInput.setAttribute('aria-invalid', 'false');
+          }
+          updateButtonState();
+        });
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          // Honeypot check
+          if (honeypot && honeypot.value) {
+            return; // silently drop
+          }
+
+          var payload = {
+            name: (nameInput.value || '').trim(),
+            email: (emailInput.value || '').trim(),
+            ts: new Date().toISOString(),
+            userAgent: navigator.userAgent || ''
+          };
+
+          // Placeholder for backend endpoint
+          // Example: Cloudflare Worker endpoint or Formspree
+          // fetch('https://your-endpoint.example/subscribe', {
+          //   method: 'POST',
+          //   headers: { 'Content-Type': 'application/json' },
+          //   body: JSON.stringify(payload)
+          // }).then(() => { /* handle ok */ }).catch(() => { /* handle error */ });
+
+          console.log('Notify payload:', payload);
+          emailInput.value = '';
+          updateButtonState();
+          showToast('Thanks! You\'re on the list.');
+        });
+
+        function showToast(message) {
+          toastMessage.textContent = message;
+          toast.classList.remove('hidden');
+          requestAnimationFrame(function(){
+            toast.classList.add('opacity-100');
+          });
+          // Auto-hide after a few seconds
+          clearTimeout(showToast._t);
+          showToast._t = setTimeout(hideToast, 4200);
+        }
+
+        function hideToast() {
+          toast.classList.remove('opacity-100');
+          setTimeout(function(){ toast.classList.add('hidden'); }, 200);
+        }
+
+        toastClose.addEventListener('click', hideToast);
+        document.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Escape') hideToast();
+        });
+
+        // Prefill button state
+        updateButtonState();
+      })();
+    </script>
+  </body>
+</html>
+
